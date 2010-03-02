@@ -26,7 +26,7 @@ http.createServer(function(req, resp) {
     var history = session.data("history");
     history = history ? history : [];
     
-    history.push(req.uri.path);
+    history.push(req.url);
     
     var ret = "<p> Hi there, here is your browsing history: </p><ul>";
     for(var i=0;i<history.length; ++i){
@@ -42,7 +42,7 @@ http.createServer(function(req, resp) {
     
     
     
-    resp.sendBody(ret);
-    resp.finish();
+    resp.write(ret);
+    resp.close();
     
 }).listen("8080", "");
