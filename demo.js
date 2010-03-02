@@ -3,7 +3,7 @@ var http = require('http'),
     sys = require('sys'),
     Sessions = require('./Sessions');
 
-    
+// PRODUCTION TODO: this expires your sessions fast!
 var SessionManager = new Sessions.manager({
     lifetime: 10
 });
