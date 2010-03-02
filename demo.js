@@ -1,7 +1,7 @@
 // Create a server to demo/mockup the session management API
 var http = require('http'),
     sys = require('sys'),
-    Sessions = require('./Sessions');
+    Sessions = require('./sessions');
 
 // PRODUCTION TODO: this expires your sessions fast!
 var SessionManager = new Sessions.manager({
