@@ -57,7 +57,8 @@ process.mixin(http.ServerResponse.prototype, {
 		options = options || {};
 		
 		if ( options.expires ){
-			var d = new Date(this.expires);
+			var d = new Date(options.expires);
+
 			var wdy = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 			var mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 					
