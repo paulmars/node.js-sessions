@@ -11,7 +11,7 @@ var SessionManager = new Sessions.manager({
 SessionManager.addListener("create", function(sid){
     sys.puts("<<< Created Session "+sid);
 });
-    
+
 SessionManager.addListener("change", function(sid, data){
     sys.puts("<<< "+sid+"\t"+sys.inspect(data));
 });
@@ -22,12 +22,12 @@ SessionManager.addListener("destroy", function(sid){
 
 http.createServer(function(req, resp) {
     var session = SessionManager.lookupOrCreate(req, resp);
-    
+
     var history = session.data("history");
     history = history ? history : [];
-    
+
     history.push(req.url);
-    
+
     var ret = "<p> Hi there, here is your browsing history: </p><ul>";
     for(var i=0;i<history.length; ++i){
         ret += '<li><a href="'+history[i]+'">'+history[i]+'</a></li>';
@@ -39,10 +39,10 @@ http.createServer(function(req, resp) {
         'Content-Type': 'text/html'
         // How awesome am I? no need to set-cookie here!
     });
-    
-    
-    
+
+
+
     resp.write(ret);
     resp.close();
-    
+
 }).listen("8080", "");
